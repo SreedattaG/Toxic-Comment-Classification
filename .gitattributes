@@ -1,4 +1,0 @@
-*.py linguist-detectable=true
-*.txt linguist-vendored
-*.csv linguist-vendored
-* linguist-vendored
