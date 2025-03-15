@@ -25,6 +25,33 @@ pip install tensorflow pandas numpy matplotlib seaborn scikit-learn
 ## Dataset
 The program expects a `train.csv` file containing comment text and toxicity labels. The GloVe embeddings file (`glove.6B.100d.txt`) is also required for word vector initialization.
 
+### **Handling Large Files**
+Since GitHub has a file size limit of 25MB for uploads, we have split large files (`train.csv` and `glove.6B.100d.txt`) into smaller parts. Before running the program, you need to merge them back together.
+
+#### **Merging `train.csv` Back Together**
+If `train.csv` was split into multiple parts (`train_part_aa`, `train_part_ab`, etc.), you can merge them back using:
+- **Mac/Linux:**
+  ```sh
+  cat train_part_* > train.csv
+  ```
+- **Windows (PowerShell):**
+  ```powershell
+  Get-Content train_part_* | Set-Content train.csv
+  ```
+
+#### **Merging `glove.6B.100d.txt` Back Together**
+If the GloVe file was split into multiple parts (`glove_part_aa`, `glove_part_ab`, etc.), merge them back using:
+- **Mac/Linux:**
+  ```sh
+  cat glove_part_* > glove.6B.100d.txt
+  ```
+- **Windows (PowerShell):**
+  ```powershell
+  Get-Content glove_part_* | Set-Content glove.6B.100d.txt
+  ```
+
+This ensures the program can properly access the full dataset and embedding file before running.
+
 ## Usage
 Run the script with:
 ```sh
@@ -57,4 +84,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT, OR OTHERWISE, ARISING FROM,  
 OUT OF, OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE  
 SOFTWARE.
-
